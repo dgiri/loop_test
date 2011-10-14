@@ -14,7 +14,7 @@
     <!-- Le styles -->
     <!-- <link href="../bootstrap.css" rel="stylesheet"> -->
 		<%= stylesheet_link_tag "bootstrap" %>
-		<%= javascript_include_tag "bootstrap-popover", "bootstrap-twipsy" %>
+		<%= javascript_include_tag "jquery-1.6.4", "bootstrap-twipsy", "bootstrap-popover" %>
 		
     <style type="text/css">
       body {
@@ -93,8 +93,9 @@
 	         <div class="span5">
 	           <h2><%= product.name %></h2>
 	           	<p><%= product.description %></p>
-							<p><%= product.price %></p>	
-	           	<p><a class="btn productDetails" data-content="<%= product.description %>" href="#" data-original-title="<%= product.name %>">View details &raquo;</a></p>					
+	           	<p>
+								<a class="btn info" data-content="<%= product.description %>" rel="popover" href="#" data-original-title="<%= product.name %>">View details &raquo;</a>							
+							</p>					
 	         </div>
 					<% if i > m %>
 						</div>												
@@ -109,10 +110,16 @@
         </footer>
       </div>
     </div>
-		<script type="text/javascript">
-			$(document).ready(function(){
-				$('.productDetails').popover('show');
-			});
+		<script>
+      $(function () {
+        $("a[rel=popover]")
+          .popover({
+            offset: 10
+          })
+          .click(function(e) {
+            e.preventDefault()
+          })
+      })
 		</script>
   </body>
 </html>

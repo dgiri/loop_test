@@ -1,29 +1,46 @@
+<div class="page-header">
+	<h2>New product</h2>
+</div>
+
 <%= form_for(@product) do |f| %>
-  <% if @product.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+	<fieldset>
+	  <% if @product.errors.any? %>
+	    <div id="error_explanation">
+	      <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
 
-      <ul>
-      <% @product.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+	      <ul>
+	      <% @product.errors.full_messages.each do |msg| %>
+	        <li><%= msg %></li>
+	      <% end %>
+	      </ul>
+	    </div>
+	  <% end %>
+		
+		<div class="clearfix">
+			<%= f.label :name %>
+      <div class="input">
+				<%= f.text_field :name, :class => "xlarge" %>
+      </div>      
+		</div>
+		
+		<div class="clearfix">
+			<%= f.label :description %>
+      <div class="input">
+				<%= f.text_area :description, :rows => 3, :class => "xlarge" %>
+      </div>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_field :description %>
-  </div>
-  <div class="field">
-    <%= f.label :price %><br />
-    <%= f.text_field :price %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+		
+		<div class="clearfix">
+			<%= f.label :price %>
+      <div class="input">
+				<%= f.text_field :price, :class => "xlarge" %>
+      </div>      
+		</div>
+		
+		<div class="actions">
+			<%= f.submit "Save Product", :class => "btn primary" %>&nbsp;<%= link_to 'Back', products_path, :class => "btn primary" %>
+		</div>
+	</fieldset>
 <% end %>
+
+
