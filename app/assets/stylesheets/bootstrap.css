@@ -2361,3 +2361,5 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   -moz-box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
   box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
 }
+
+#notifications{top:-60px;overflow:visible;position:fixed;z-index:9999;width:100%;}

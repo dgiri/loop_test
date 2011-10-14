@@ -30,7 +30,14 @@
   </head>
 
   <body>
+		<div id="notifications">
+			<div class="alert-message success">
+				<a href="#" class="close">×</a>
+				<p><strong><%= notice %></strong></p>
+			</div>
+		</div>
 
+		
     <div class="topbar">
       <div class="topbar-inner">
         <div class="container-fluid">
@@ -121,5 +128,24 @@
           })
       })
 		</script>
+		<script type="text/javascript">
+		<% if flash[:notice] %>
+			$('#notifications').animate({
+				"top" : "40"
+			});
+		<% end %>
+			setTimeout(function() {
+				$('#notifications').animate({
+					"top" : "-60"
+				});
+				}, 10000); 
+				
+			  $("#notifications").click(function() {
+			    return $(this).animate({
+			      top: "-60"
+			    });
+			  });
+		 </script>  
+		
   </body>
 </html>
